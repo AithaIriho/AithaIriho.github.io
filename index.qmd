@@ -1,11 +1,7 @@
 ---
-title: "AithaIriho.github.io"
+title: "Home"
 ---
 
-This is a Quarto website.
+# Welcome
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+Hello! My name is Aitha Iriho, and this is my website.
