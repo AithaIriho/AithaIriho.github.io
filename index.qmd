@@ -1,7 +1,20 @@
 ---
-title: "Home"
+title: "Aitha Iriho"
+image: media/iriho.jpg
+toc: false
+about:
+  template: jolla
+  image-shape: round
+  image-width: 17em
+  links:
+    - text: GitHub
+      href: https://github.com/AithaIriho
+    - text: Email
+      href: mailto:iriho1@stolaf.edu
 ---
 
-# Welcome
+Hello! My name is Aitha Iriho.
 
-Hello! My name is Aitha Iriho, and this is my website.
+I am a student at St. Olaf College studying Statistics & Data Science and French.
+
+I am interested in data analysis, statistical modeling, and applying data to real-world problems.
