@@ -12,5 +12,47 @@
     "title": "Aitha Iriho",
     "section": "",
     "text": "Hello! My name is Aitha Iriho.\nI am a student at St. Olaf College studying Statistics & Data Science and French.\nI am interested in data analysis, statistical modeling, and applying data to real-world problems."
+  },
+  {
+    "objectID": "text-analysis.html",
+    "href": "text-analysis.html",
+    "title": "Mini-Project 1: Text Analysis",
+    "section": "",
+    "text": "For Mini-Project 1, I analyzed immigration-related tweets. Social media platforms like Twitter are important places where people express opinions about immigration, refugees, asylum, borders, and migration.\nThe goal of this project was to identify common themes, word patterns, and emotional tone in the tweets.\n\n\n\nThe dataset includes a random sample of immigration-related tweets. I cleaned the tweet text by changing it to lowercase, removing links, and identifying migration-related words.\n\n\n\nI used text analysis tools in R, including stringr, tidytext, and sentiment analysis. I used regular expressions to remove links and identify words related to immigration, refugees, migrants, asylum, and borders.\n\n\n\n\n\nIn this part of the project, I counted the most common words in the tweets after removing stop words.\nThis plot helps show the main topics discussed in the tweets. Words such as “immigration,” “uk,” and “immigrants” appeared often, which suggests that the tweets focused strongly on immigration policy and public discussion.\n\n\n\nI also used sentiment analysis to compare positive and negative words in the tweets.\nThe results showed that negative words appeared more often than positive words. This suggests that immigration discussions on Twitter often include critical, worried, or emotional language.\n\n\n\nI also looked at the most common positive and negative words separately. Some common negative words included words like “illegal,” “fears,” and “racist,” while some positive words included words like “benefits,” “reform,” and “support.”\n\n\n\n\nOverall, this project shows that text analysis can help reveal patterns in social media discussions about immigration. The tweets often included strong opinions, and negative language appeared more frequently than positive language. However, some positive language related to reform and support was also present."
+  },
+  {
+    "objectID": "text-analysis.html#introduction",
+    "href": "text-analysis.html#introduction",
+    "title": "Mini-Project 1: Text Analysis",
+    "section": "",
+    "text": "For Mini-Project 1, I analyzed immigration-related tweets. Social media platforms like Twitter are important places where people express opinions about immigration, refugees, asylum, borders, and migration.\nThe goal of this project was to identify common themes, word patterns, and emotional tone in the tweets."
+  },
+  {
+    "objectID": "text-analysis.html#data",
+    "href": "text-analysis.html#data",
+    "title": "Mini-Project 1: Text Analysis",
+    "section": "",
+    "text": "The dataset includes a random sample of immigration-related tweets. I cleaned the tweet text by changing it to lowercase, removing links, and identifying migration-related words."
+  },
+  {
+    "objectID": "text-analysis.html#methods",
+    "href": "text-analysis.html#methods",
+    "title": "Mini-Project 1: Text Analysis",
+    "section": "",
+    "text": "I used text analysis tools in R, including stringr, tidytext, and sentiment analysis. I used regular expressions to remove links and identify words related to immigration, refugees, migrants, asylum, and borders."
+  },
+  {
+    "objectID": "text-analysis.html#results",
+    "href": "text-analysis.html#results",
+    "title": "Mini-Project 1: Text Analysis",
+    "section": "",
+    "text": "In this part of the project, I counted the most common words in the tweets after removing stop words.\nThis plot helps show the main topics discussed in the tweets. Words such as “immigration,” “uk,” and “immigrants” appeared often, which suggests that the tweets focused strongly on immigration policy and public discussion.\n\n\n\nI also used sentiment analysis to compare positive and negative words in the tweets.\nThe results showed that negative words appeared more often than positive words. This suggests that immigration discussions on Twitter often include critical, worried, or emotional language.\n\n\n\nI also looked at the most common positive and negative words separately. Some common negative words included words like “illegal,” “fears,” and “racist,” while some positive words included words like “benefits,” “reform,” and “support.”"
+  },
+  {
+    "objectID": "text-analysis.html#conclusion",
+    "href": "text-analysis.html#conclusion",
+    "title": "Mini-Project 1: Text Analysis",
+    "section": "",
+    "text": "Overall, this project shows that text analysis can help reveal patterns in social media discussions about immigration. The tweets often included strong opinions, and negative language appeared more frequently than positive language. However, some positive language related to reform and support was also present."
   }
 ]
