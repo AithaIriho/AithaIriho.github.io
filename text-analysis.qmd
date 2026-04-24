@@ -1,0 +1,41 @@
+---
+title: "Mini-Project 1: Text Analysis"
+---
+
+# Mini-Project 1: Text Analysis
+
+## Introduction
+
+For Mini-Project 1, I analyzed immigration-related tweets. Social media platforms like Twitter are important places where people express opinions about immigration, refugees, asylum, borders, and migration.
+
+The goal of this project was to identify common themes, word patterns, and emotional tone in the tweets.
+
+## Data
+
+The dataset includes a random sample of immigration-related tweets. I cleaned the tweet text by changing it to lowercase, removing links, and identifying migration-related words.
+
+## Methods
+
+I used text analysis tools in R, including `stringr`, `tidytext`, and sentiment analysis. I used regular expressions to remove links and identify words related to immigration, refugees, migrants, asylum, and borders.
+
+## Results
+
+### Most Common Words
+
+In this part of the project, I counted the most common words in the tweets after removing stop words.
+
+This plot helps show the main topics discussed in the tweets. Words such as “immigration,” “uk,” and “immigrants” appeared often, which suggests that the tweets focused strongly on immigration policy and public discussion.
+
+### Positive and Negative Sentiment
+
+I also used sentiment analysis to compare positive and negative words in the tweets.
+
+The results showed that negative words appeared more often than positive words. This suggests that immigration discussions on Twitter often include critical, worried, or emotional language.
+
+### Most Common Sentiment Words
+
+I also looked at the most common positive and negative words separately. Some common negative words included words like “illegal,” “fears,” and “racist,” while some positive words included words like “benefits,” “reform,” and “support.”
+
+## Conclusion
+
+Overall, this project shows that text analysis can help reveal patterns in social media discussions about immigration. The tweets often included strong opinions, and negative language appeared more frequently than positive language. However, some positive language related to reform and support was also present.
