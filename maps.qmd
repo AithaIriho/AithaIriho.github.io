@@ -8,7 +8,7 @@ title: "US Choropleth Maps"
 This page shows choropleth maps using state-level data.
 ```
 
-```{r, message=FALSE, warning=FALSE}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(maps)
 library(sf)
