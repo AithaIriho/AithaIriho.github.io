@@ -45,11 +45,6 @@ states_interactive <- states_sf2 |>
   filter(!(state_name %in% c("alaska", "hawaii")))
 ```
 
-\
-\
-\
-\
-\
 \## Numeric Variable: Car Fatality Rate
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
