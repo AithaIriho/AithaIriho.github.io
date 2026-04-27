@@ -3,9 +3,6 @@ title: "Mini-Project 1: Text Analysis"
 ---
 
 
-
-# Mini-Project 1: Text Analysis
-
 ## Introduction
 
 For Mini-Project 1, I analyzed immigration-related tweets. Social media platforms like Twitter are important places where people express opinions about immigration, refugees, asylum, borders, and migration.

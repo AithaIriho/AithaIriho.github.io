@@ -18,7 +18,7 @@
     "href": "text-analysis.html",
     "title": "Mini-Project 1: Text Analysis",
     "section": "",
-    "text": "For Mini-Project 1, I analyzed immigration-related tweets. Social media platforms like Twitter are important places where people express opinions about immigration, refugees, asylum, borders, and migration.\nThe goal of this project was to identify common themes, word patterns, and emotional tone in the tweets.\n\n\n\nThe dataset includes a random sample of immigration-related tweets. I cleaned the tweet text by changing it to lowercase, removing links, and identifying migration-related words.\n\n\n\nI used text analysis tools in R, including stringr, tidytext, and sentiment analysis. I used regular expressions to remove links and identify words related to immigration, refugees, migrants, asylum, and borders.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThis plot shows the most common words in the tweets. Words such as “immigration,” “uk,” and “immigrants” appear frequently.\n\n\n\n\n\n\n\n\n\n\n\n\nThis plot shows that negative words appear more often than positive words.\n\n\n\n\n\n\n\n\n\n\n\n\nThis plot shows the most common positive and negative words in the tweets.\n\n\n\n\nOverall, this project shows that text analysis can help reveal patterns in social media discussions about immigration. The tweets often included strong opinions, and negative language appeared more frequently than positive language. However, some positive language related to reform and support was also present."
+    "text": "For Mini-Project 1, I analyzed immigration-related tweets. Social media platforms like Twitter are important places where people express opinions about immigration, refugees, asylum, borders, and migration.\nThe goal of this project was to identify common themes, word patterns, and emotional tone in the tweets."
   },
   {
     "objectID": "text-analysis.html#introduction",
@@ -31,28 +31,28 @@
     "objectID": "text-analysis.html#data",
     "href": "text-analysis.html#data",
     "title": "Mini-Project 1: Text Analysis",
-    "section": "",
-    "text": "The dataset includes a random sample of immigration-related tweets. I cleaned the tweet text by changing it to lowercase, removing links, and identifying migration-related words."
+    "section": "Data",
+    "text": "Data\nThe dataset includes a random sample of immigration-related tweets. I cleaned the tweet text by changing it to lowercase, removing links, and identifying migration-related words."
   },
   {
     "objectID": "text-analysis.html#methods",
     "href": "text-analysis.html#methods",
     "title": "Mini-Project 1: Text Analysis",
-    "section": "",
-    "text": "I used text analysis tools in R, including stringr, tidytext, and sentiment analysis. I used regular expressions to remove links and identify words related to immigration, refugees, migrants, asylum, and borders."
+    "section": "Methods",
+    "text": "Methods\nI used text analysis tools in R, including stringr, tidytext, and sentiment analysis. I used regular expressions to remove links and identify words related to immigration, refugees, migrants, asylum, and borders."
   },
   {
     "objectID": "text-analysis.html#results",
     "href": "text-analysis.html#results",
     "title": "Mini-Project 1: Text Analysis",
-    "section": "",
-    "text": "This plot shows the most common words in the tweets. Words such as “immigration,” “uk,” and “immigrants” appear frequently.\n\n\n\n\n\n\n\n\n\n\n\n\nThis plot shows that negative words appear more often than positive words.\n\n\n\n\n\n\n\n\n\n\n\n\nThis plot shows the most common positive and negative words in the tweets."
+    "section": "Results",
+    "text": "Results\n\nMost Common Words\n\n\n\n\n\n\n\n\n\nThis plot shows the most common words in the tweets. Words such as “immigration,” “uk,” and “immigrants” appear frequently.\n\n\nSentiment Analysis\n\n\n\n\n\n\n\n\n\nThis plot shows that negative words appear more often than positive words.\n\n\nMost Common Sentiment Words\n\n\n\n\n\n\n\n\n\nThis plot shows the most common positive and negative words in the tweets."
   },
   {
     "objectID": "text-analysis.html#conclusion",
     "href": "text-analysis.html#conclusion",
     "title": "Mini-Project 1: Text Analysis",
-    "section": "",
-    "text": "Overall, this project shows that text analysis can help reveal patterns in social media discussions about immigration. The tweets often included strong opinions, and negative language appeared more frequently than positive language. However, some positive language related to reform and support was also present."
+    "section": "Conclusion",
+    "text": "Conclusion\nOverall, this project shows that text analysis can help reveal patterns in social media discussions about immigration. The tweets often included strong opinions, and negative language appeared more frequently than positive language. However, some positive language related to reform and support was also present."
   }
 ]
