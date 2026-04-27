@@ -47,18 +47,23 @@ states_interactive <- states_sf2 |>
 
 \## Numeric Variable: Car Fatality Rate
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 ggplot(states_static, aes(x = long, y = lat, group = group)) +
   geom_polygon(aes(fill = carfatal07), color = "black", linewidth = 0.2) +
   coord_map() +
   theme_void() +
-  scale_fill_viridis_c(name = "Car Fatality Rate")
+  scale_fill_viridis_c(name = "Car Fatality Rate") +
+  labs(
+    title = "Car Fatality Rate by State",
+    fill = "Car Fatality Rate",
+    caption = "Data source: poliscidata package"
+  )
 ```
 
 This map shows how car fatality rates vary across states. Higher values appear in parts of the South, while many northern states tend to have lower rates. This suggests there may be regional differences in driving conditions, road safety, or behavior.\
 
-```{r}
-pal_num <- colorNumeric("viridis", states_interactive$carfatal07)
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+pal_num <- colorNumeric("viridis", domain = states_interactive$carfatal07)
 
 labels_num <- lapply(
   paste0(states_interactive$name, ": ", round(states_interactive$carfatal07, 2)),
@@ -74,14 +79,22 @@ leaflet(states_interactive) |>
     color = "white",
     fillOpacity = 0.7,
     label = labels_num
+  ) |>
+  addLegend(
+    pal = pal_num,
+    values = ~carfatal07,
+    title = "Car Fatality Rate",
+    position = "bottomright"
   )
+
 ```
 
 This interactive map allows users to hover over each state to see the exact car fatality rate, making it easier to compare values across states.\
 \
-\## Categorical Variable: Cook Index
+\## Categorical Variable: Cook Index\
+\
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 states_static <- states_static |>
   mutate(cook_index3 = factor(cook_index3))
 
@@ -89,13 +102,19 @@ ggplot(states_static, aes(x = long, y = lat, group = group)) +
   geom_polygon(aes(fill = cook_index3), color = "black", linewidth = 0.2) +
   coord_map() +
   theme_void() +
-  scale_fill_brewer(name = "Cook Index", palette = "Set1")
+  scale_fill_brewer(name = "Cook Index", palette = "Set1") +
+  labs(
+    title = "Cook Index Category by State",
+    fill = "Cook Index",
+    caption = "Data source: poliscidata package"
+  )
 ```
 
 This map shows the political category of each state using the Cook Index. We can see clear regional patterns, with some areas leaning more Democratic and others more Republican, while a few states are more balanced.\
+\
 
-```{r}
-pal_cat <- colorFactor("Set1", states_interactive$cook_index3)
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+pal_cat <- colorFactor("Set1", domain = states_interactive$cook_index3)
 
 labels_cat <- lapply(
   paste0(states_interactive$name, ": ", states_interactive$cook_index3),
@@ -111,6 +130,12 @@ leaflet(states_interactive) |>
     color = "white",
     fillOpacity = 0.7,
     label = labels_cat
+  ) |>
+  addLegend(
+    pal = pal_cat,
+    values = ~cook_index3,
+    title = "Cook Index",
+    position = "bottomright"
   )
 ```
 
