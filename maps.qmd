@@ -45,7 +45,7 @@ states_interactive <- states_sf2 |>
   filter(!(state_name %in% c("alaska", "hawaii")))
 ```
 
-\## Numeric Variable: Car Fatality Rate\
+\## Numeric Variable: Car Fatality Rate
 
 ```{r}
 ggplot(states_static, aes(x = long, y = lat, group = group)) +
@@ -55,8 +55,7 @@ ggplot(states_static, aes(x = long, y = lat, group = group)) +
   scale_fill_viridis_c(name = "Car Fatality Rate")
 ```
 
-This map shows how car fatality rates vary across states.\
-\
+This map shows how car fatality rates vary across states. Higher values appear in parts of the South, while many northern states tend to have lower rates. This suggests there may be regional differences in driving conditions, road safety, or behavior.\
 
 ```{r}
 pal_num <- colorNumeric("viridis", states_interactive$carfatal07)
@@ -78,8 +77,9 @@ leaflet(states_interactive) |>
   )
 ```
 
-\## Categorical Variable: Cook Index\
+This interactive map allows users to hover over each state to see the exact car fatality rate, making it easier to compare values across states.\
 \
+\## Categorical Variable: Cook Index
 
 ```{r}
 states_static <- states_static |>
@@ -92,8 +92,7 @@ ggplot(states_static, aes(x = long, y = lat, group = group)) +
   scale_fill_brewer(name = "Cook Index", palette = "Set1")
 ```
 
-This map shows political categories across states.\
-\
+This map shows the political category of each state using the Cook Index. We can see clear regional patterns, with some areas leaning more Democratic and others more Republican, while a few states are more balanced.\
 
 ```{r}
 pal_cat <- colorFactor("Set1", states_interactive$cook_index3)
@@ -114,3 +113,5 @@ leaflet(states_interactive) |>
     label = labels_cat
   )
 ```
+
+This interactive map allows users to explore the political category of each state by hovering over it.
