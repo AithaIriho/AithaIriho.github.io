@@ -1,0 +1,116 @@
+---
+title: "US Choropleth Maps"
+---
+
+\## Introduction
+
+```         
+This page shows choropleth maps using state-level data.
+```
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(maps)
+library(sf)
+library(leaflet)
+library(htmltools)
+library(poliscidata)
+library(stringr)
+library(viridis)
+
+states_polygon <- as_tibble(map_data("state")) |>
+  select(region, group, order, lat, long)
+
+states_sf <- read_sf("https://rstudio.github.io/leaflet/json/us-states.geojson") |>
+  select(name, geometry)
+
+polisci_data <- as_tibble(poliscidata::states) |>
+  select(state, carfatal07, cook_index3)
+
+states_polygon2 <- states_polygon |>
+  mutate(region = str_to_lower(str_squish(region)))
+
+states_sf2 <- states_sf |>
+  mutate(state_name = str_to_lower(str_squish(name)))
+
+polisci_data2 <- polisci_data |>
+  mutate(state_name = str_to_lower(str_squish(state)))
+
+states_static <- states_polygon2 |>
+  left_join(polisci_data2, by = c("region" = "state_name")) |>
+  filter(!(region %in% c("alaska", "hawaii")))
+
+states_interactive <- states_sf2 |>
+  left_join(polisci_data2, by = "state_name") |>
+  filter(!(state_name %in% c("alaska", "hawaii")))
+```
+
+\## Numeric Variable: Car Fatality Rate\
+
+```{r}
+ggplot(states_static, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = carfatal07), color = "black", linewidth = 0.2) +
+  coord_map() +
+  theme_void() +
+  scale_fill_viridis_c(name = "Car Fatality Rate")
+```
+
+This map shows how car fatality rates vary across states.\
+\
+
+```{r}
+pal_num <- colorNumeric("viridis", states_interactive$carfatal07)
+
+labels_num <- lapply(
+  paste0(states_interactive$name, ": ", round(states_interactive$carfatal07, 2)),
+  HTML
+)
+
+leaflet(states_interactive) |>
+  setView(-96, 37.8, 4) |>
+  addTiles() |>
+  addPolygons(
+    fillColor = ~pal_num(carfatal07),
+    weight = 2,
+    color = "white",
+    fillOpacity = 0.7,
+    label = labels_num
+  )
+```
+
+\## Categorical Variable: Cook Index\
+\
+
+```{r}
+states_static <- states_static |>
+  mutate(cook_index3 = factor(cook_index3))
+
+ggplot(states_static, aes(x = long, y = lat, group = group)) +
+  geom_polygon(aes(fill = cook_index3), color = "black", linewidth = 0.2) +
+  coord_map() +
+  theme_void() +
+  scale_fill_brewer(name = "Cook Index", palette = "Set1")
+```
+
+This map shows political categories across states.\
+\
+
+```{r}
+pal_cat <- colorFactor("Set1", states_interactive$cook_index3)
+
+labels_cat <- lapply(
+  paste0(states_interactive$name, ": ", states_interactive$cook_index3),
+  HTML
+)
+
+leaflet(states_interactive) |>
+  setView(-96, 37.8, 4) |>
+  addTiles() |>
+  addPolygons(
+    fillColor = ~pal_cat(cook_index3),
+    weight = 2,
+    color = "white",
+    fillOpacity = 0.7,
+    label = labels_cat
+  )
+```
