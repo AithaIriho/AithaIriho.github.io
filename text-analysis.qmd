@@ -2,6 +2,8 @@
 title: "Mini-Project 1: Text Analysis"
 ---
 
+
+
 # Mini-Project 1: Text Analysis
 
 ## Introduction
@@ -22,19 +24,62 @@ I used text analysis tools in R, including `stringr`, `tidytext`, and sentiment 
 
 ### Most Common Words
 
-In this part of the project, I counted the most common words in the tweets after removing stop words.
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(stringr)
+library(tidytext)
 
-This plot helps show the main topics discussed in the tweets. Words such as “immigration,” “uk,” and “immigrants” appeared often, which suggests that the tweets focused strongly on immigration policy and public discussion.
+tweets <- readr::read_csv("https://raw.githubusercontent.com/jmrphy/migration_tweets/master/cleaned_data/random_sample.csv")
 
-### Positive and Negative Sentiment
+tweets_clean <- tweets |>
+  mutate(
+    text_lower = str_to_lower(text),
+    text_nolink = str_replace_all(text_lower, "http\\S+", "")
+  )
 
-I also used sentiment analysis to compare positive and negative words in the tweets.
+tweet_words <- tweets_clean |>
+  select(text_nolink) |>
+  unnest_tokens(word, text_nolink) |>
+  anti_join(stop_words, by = "word")
 
-The results showed that negative words appeared more often than positive words. This suggests that immigration discussions on Twitter often include critical, worried, or emotional language.
+common_words <- tweet_words |>
+  count(word, sort = TRUE)
+
+common_words |>
+  slice_max(n, n = 10) |>
+  ggplot(aes(x = reorder(word, n), y = n)) +
+  geom_bar(stat = "identity") +
+  coord_flip()
+```
+
+This plot shows the most common words in the tweets. Words such as “immigration,” “uk,” and “immigrants” appear frequently.
+
+### Sentiment Analysis
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+tweet_sentiment <- tweet_words |>
+  inner_join(get_sentiments("bing"), by = "word")
+
+tweet_sentiment |>
+  count(sentiment) |>
+  ggplot(aes(x = sentiment, y = n)) +
+  geom_bar(stat = "identity")
+```
+This plot shows that negative words appear more often than positive words.
 
 ### Most Common Sentiment Words
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+top_sentiment_words <- tweet_sentiment |>
+  count(word, sentiment, sort = TRUE) |>
+  group_by(sentiment) |>
+  slice_max(n, n = 10)
 
-I also looked at the most common positive and negative words separately. Some common negative words included words like “illegal,” “fears,” and “racist,” while some positive words included words like “benefits,” “reform,” and “support.”
+ggplot(top_sentiment_words, aes(x = reorder(word, n), y = n, fill = sentiment)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~sentiment) +
+  coord_flip()
+```
+This plot shows the most common positive and negative words in the tweets.
 
 ## Conclusion
 
