@@ -1,17 +1,10 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "maps.html",
+    "href": "maps.html",
+    "title": "US Choropleth Maps",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Aitha Iriho",
-    "section": "",
-    "text": "Hello! My name is Aitha Iriho.\nI am a student at St. Olaf College studying Statistics & Data Science and French.\nI am interested in data analysis, statistical modeling, and applying data to real-world problems."
+    "text": "## Introduction\nThis page shows choropleth maps using state-level data.\n\nlibrary(tidyverse)\nlibrary(maps)\nlibrary(sf)\nlibrary(leaflet)\nlibrary(htmltools)\nlibrary(poliscidata)\nlibrary(stringr)\nlibrary(viridis)\n\nstates_polygon &lt;- as_tibble(map_data(\"state\")) |&gt;\n  select(region, group, order, lat, long)\n\nstates_sf &lt;- read_sf(\"https://rstudio.github.io/leaflet/json/us-states.geojson\") |&gt;\n  select(name, geometry)\n\npolisci_data &lt;- as_tibble(poliscidata::states) |&gt;\n  select(state, carfatal07, cook_index3)\n\nstates_polygon2 &lt;- states_polygon |&gt;\n  mutate(region = str_to_lower(str_squish(region)))\n\nstates_sf2 &lt;- states_sf |&gt;\n  mutate(state_name = str_to_lower(str_squish(name)))\n\npolisci_data2 &lt;- polisci_data |&gt;\n  mutate(state_name = str_to_lower(str_squish(state)))\n\nstates_static &lt;- states_polygon2 |&gt;\n  left_join(polisci_data2, by = c(\"region\" = \"state_name\")) |&gt;\n  filter(!(region %in% c(\"alaska\", \"hawaii\")))\n\nstates_interactive &lt;- states_sf2 |&gt;\n  left_join(polisci_data2, by = \"state_name\") |&gt;\n  filter(!(state_name %in% c(\"alaska\", \"hawaii\")))\n\n## Numeric Variable: Car Fatality Rate\n\n\nggplot(states_static, aes(x = long, y = lat, group = group)) +\n  geom_polygon(aes(fill = carfatal07), color = \"black\", linewidth = 0.2) +\n  coord_map() +\n  theme_void() +\n  scale_fill_viridis_c(name = \"Car Fatality Rate\")\n\n\n\n\n\n\n\n\nThis map shows how car fatality rates vary across states.\n\n\n\npal_num &lt;- colorNumeric(\"viridis\", states_interactive$carfatal07)\n\nlabels_num &lt;- lapply(\n  paste0(states_interactive$name, \": \", round(states_interactive$carfatal07, 2)),\n  HTML\n)\n\nleaflet(states_interactive) |&gt;\n  setView(-96, 37.8, 4) |&gt;\n  addTiles() |&gt;\n  addPolygons(\n    fillColor = ~pal_num(carfatal07),\n    weight = 2,\n    color = \"white\",\n    fillOpacity = 0.7,\n    label = labels_num\n  )\n\n\n\n\n\n## Categorical Variable: Cook Index\n\n\n\nstates_static &lt;- states_static |&gt;\n  mutate(cook_index3 = factor(cook_index3))\n\nggplot(states_static, aes(x = long, y = lat, group = group)) +\n  geom_polygon(aes(fill = cook_index3), color = \"black\", linewidth = 0.2) +\n  coord_map() +\n  theme_void() +\n  scale_fill_brewer(name = \"Cook Index\", palette = \"Set1\")\n\n\n\n\n\n\n\n\nThis map shows political categories across states.\n\n\n\npal_cat &lt;- colorFactor(\"Set1\", states_interactive$cook_index3)\n\nlabels_cat &lt;- lapply(\n  paste0(states_interactive$name, \": \", states_interactive$cook_index3),\n  HTML\n)\n\nleaflet(states_interactive) |&gt;\n  setView(-96, 37.8, 4) |&gt;\n  addTiles() |&gt;\n  addPolygons(\n    fillColor = ~pal_cat(cook_index3),\n    weight = 2,\n    color = \"white\",\n    fillOpacity = 0.7,\n    label = labels_cat\n  )"
   },
   {
     "objectID": "text-analysis.html",
@@ -54,5 +47,19 @@
     "title": "Mini-Project 1: Text Analysis",
     "section": "Conclusion",
     "text": "Conclusion\nOverall, this project shows that text analysis can help reveal patterns in social media discussions about immigration. The tweets often included strong opinions, and negative language appeared more frequently than positive language. However, some positive language related to reform and support was also present."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Aitha Iriho",
+    "section": "",
+    "text": "Hello! My name is Aitha Iriho.\nI am a student at St. Olaf College studying Statistics & Data Science and French.\nI am interested in data analysis, statistical modeling, and applying data to real-world problems."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
   }
 ]

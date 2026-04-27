@@ -1,3 +1,7 @@
+project:
+  type: website
+  output-dir: docs
+
 website:
   title: "Aitha Iriho"
   navbar:
@@ -8,3 +12,12 @@ website:
         text: Text Analysis
       - href: maps.qmd
         text: Maps
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+    page-layout: full
